@@ -1,0 +1,139 @@
+<%- include("header.ejs")%>
+<nav class="navbar navbar-expand-lg bg-primary ">
+    <div class="container">
+      <a class="navbar-brand text-light" href="#">Employee Dashboard</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+          <li class="nav-item">
+            <a class="nav-link text-light" aria-current="page" href="#add">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" aria-current="page" href="#leave">Apply For Leave</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" aria-current="page" href="#get">My Leaves</a>
+          </li>
+        
+          <li class="nav-item">
+            <a class="btn btn-danger text-light" aria-current="page" href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+  <section class="section"id="add">
+    <div class="container">
+      <div class="col">
+        <h2>My Profile</h2>
+        <form class="row g-3">
+          <div class="col-12">
+            <label for="names" class="form-label">Name</label>
+            <input type="text" class="form-control p-2" id="names" value="<%= employee.empname %>"readonly>
+          </div>
+
+
+
+            <div class="col-12">
+              <label for="inputEmail4" class="form-label">Email</label>
+              <input type="email" class="form-control p-2" id="inputEmail4" value="<%= employee.email %>" readonly>
+            </div>
+          
+
+            <div class="col-12">
+              <label for="address" class="form-label">Address</label>
+              <input type="text" class="form-control p-2" id="address" value="<%= employee.address %>" readonly>
+            </div>
+
+
+            <div class="col-12">
+              <label for="salary" class="form-label">Salary</label>
+              <input type="number" class="form-control p-2" id="salary" value="<%= employee.salary %>" readonly>
+            </div>
+
+            <div class="col-12">
+                <label for="Department" class="form-label">Department</label>
+                <input type="text" class="form-control p-2" id="Department" value="<%= employee.department %>"readonly>
+              </div>
+          </form>
+   </div>
+    </div>
+  </section>
+
+
+  <section class="section"id="leave">
+    <div class="container">
+      <div class="col">
+        <h2>Apply For Leave</h2>
+        <form class="row g-3"action="/applyLeave" method="POST">
+          <div class="col-12">
+            <label for="names" class="form-label">Name</label>
+            <input type="text" class="form-control p-2" id="names"name="names" value="<%= employee.empname %>" readonly>
+          </div>
+
+
+
+            <div class="col-12">
+              <label for="inputEmail4" class="form-label">Email</label>
+              <input type="email" class="form-control p-2" id="inputEmail4"value="<%= employee.email %>"name="email" readonly>
+            </div>
+          
+
+            <div class="col-12">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" class="form-control p-2" id="subject" name="subject">
+            </div>
+
+
+            <div class="col-12">
+              <label for="message" class="form-label">Message</label><br>
+             <textarea name="message" id="message" class="w-100 h-100"></textarea>
+            </div>
+            <div class="col-12 mt-5">
+            <button type="submit" class="btn btn-success text-white w-25 apply">Apply</button>
+        </div>
+          </form>
+   </div>
+    </div>
+  </section>
+
+
+
+
+  <section class="section" id="get">
+    <div class="container pt-5">
+      <div class="col-12">
+        <h2>My Leaves</h2>
+        <table class="table table-hover  rounded-3 overflow-hidden">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+              <% myLeaves.forEach((leave,index) => { %>
+                  <tr>
+                      <th><%= index+1 %></th>
+                      <td><%= leave.subject %></td>
+                      <td><%= leave.message %></td>
+                      <td><%= new Date(leave.date).toLocaleDateString() %></td>
+                      <td><%= leave.status %></td>
+                  </tr>
+              <% }) %>
+          </tbody>
+          
+        </table>
+      
+    </div>
+    </div>
+  </section>

@@ -1,0 +1,76 @@
+body,html{
+    margin: 0;
+    height: 100%;
+scroll-behavior: smooth;
+}
+
+
+.loginframe{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 1px 1px 20px 20px lightgray;
+    border-radius: 10px;
+    padding: 40px;
+    width: 500px;
+    
+}
+
+.loginframe h2{
+   margin-bottom: 10px;
+   text-align: center;
+}
+.nav-link{
+    font-weight: bold;
+    font-size: 15px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.navbar-brand{
+    font-weight: bold;
+    font-size: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+.section{
+    height:100%;
+padding-top: 90px;
+}
+
+#add h2,#addhr h2{
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+}
+
+.addEmployee{
+    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table td button a{
+    text-decoration: none;
+}
+.edit h2{
+    text-align: center;
+}
+
+.leave,#get,#leave h2{
+    text-align: center;
+}
+
+.back{
+    margin-left: 48%;
+}
+.navbar{
+    position:fixed;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.apply{
+    margin-left: 35%;
+}

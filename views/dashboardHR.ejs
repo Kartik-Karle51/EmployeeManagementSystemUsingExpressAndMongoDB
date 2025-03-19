@@ -1,0 +1,147 @@
+<%- include("header.ejs")%>
+<nav class="navbar navbar-expand-lg bg-primary ">
+    <div class="container">
+      <a class="navbar-brand text-light" href="#">HR Dashboard</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+          <li class="nav-item">
+            <a class="nav-link text-light" aria-current="page" href="#add">Add Employee</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" aria-current="page" href="#addhr">Add HR</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" aria-current="page" href="#get">Get Employee</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" aria-current="page" href="#get">Update Employee</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" aria-current="page" href="#get">Delete Employee</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" aria-current="page" href="/leave">Leave Records</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-danger text-light" aria-current="page" href="/">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <section class="section"id="add">
+    <div class="container">
+      <div class="col">
+        <h2>Add Employee</h2>
+        <form class="row g-3"action="/add"method="post">
+          <div class="col-12">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control p-2" id="name" name="empname"placeholder="Enter Name">
+          </div>
+
+
+
+            <div class="col-12">
+              <label for="inputEmail4" class="form-label">Email</label>
+              <input type="email" class="form-control p-2" id="inputEmail4" name="email"placeholder="Enter Email">
+            </div>
+          
+
+            <div class="col-12">
+              <label for="address" class="form-label">Address</label>
+              <input type="text" class="form-control p-2" id="address" name="address"placeholder="Enter Address">
+            </div>
+
+
+            <div class="col-12">
+              <label for="salary" class="form-label">Salary</label>
+              <input type="number" class="form-control p-2" id="salary" name="salary"placeholder="Enter Salary">
+            </div>
+
+
+
+
+            <div class="col-12">
+              <label for="dept" class="form-label">Department</label>
+            <select class="form-select" id="dept" aria-label="Default select example"name="department">
+              <option selected>Select Department</option>
+              <option value="Development & Engineering">Development & Engineering</option>
+              <option value=" Quality Assurance (QA) & Testing"> Quality Assurance (QA) & Testing</option>
+              <option value="IT Support / Helpdesk">IT Support / Helpdesk</option>
+              <option value="Product Management">Product Management</option>  
+              <option value="Security">Security</option>  
+              <option value="Database Administration (DBA)">Database Administration (DBA)</option>
+              <option value="Sales & Marketing">Sales & Marketing</option>
+              <option value="Networking & Infrastructure">Networking & Infrastructure</option>
+            </select>
+          </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-success w-25 addEmployee">Add</button>
+            </div>
+          </form>
+   </div>
+    </div>
+  </section>
+
+  <section class="section"id="addhr">
+    <div class="container">
+      <div class="col">
+        <h2>Add HR</h2>
+        <form class="row g-3"action="/addhr"method="post">
+
+            <div class="col-12">
+              <label for="inputEmail4" class="form-label">Email</label>
+              <input type="email" class="form-control p-2" id="inputEmail4" name="email"placeholder="Enter Email">
+            </div>
+
+            <div class="col-12">
+              <button type="submit" class="btn btn-success w-25 addEmployee">Add</button>
+            </div>
+          </form>
+   </div>
+    </div>
+  </section>
+
+
+  <section class="section" id="get">
+    <div class="container pt-5">
+      <div class="col-12">
+        <table class="table table-hover  rounded-3 overflow-hidden">
+          <thead>
+              <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Salary</th>
+                  <th scope="col">Department</th>
+                  <th scope="col">Edit</th>
+                  <th scope="col" >Delete</th>
+              </tr>
+          </thead>
+          <tbody>
+            <% employees.forEach((employee, index) => { %>
+              <tr>
+                  <th><%= index + 1 %></th>
+                  <td><%= employee.empname %></td>
+                  <td><%= employee.email %></td>
+                  <td><%= employee.address %></td>
+                  <td><%= employee.salary %></td>
+                  <td><%= employee.department %></td>
+                  <td>
+                      <a href="/update/<%= employee._id %>" class="btn btn-success text-white">Edit</a>
+                  </td>
+                  <td>
+                      <a href="/delete/<%= employee._id %>" class="btn btn-danger text-white">Delete</a>
+                  </td>
+              </tr>
+          <% }) %>
+          </tbody>
+      </table>
+      
+    </div>
+    </div>
+  </section>

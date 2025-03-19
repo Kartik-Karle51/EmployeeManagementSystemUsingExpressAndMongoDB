@@ -1,0 +1,30 @@
+<%- include("header.ejs")%>
+
+
+
+   <div class="container">
+    <div class="col loginframe">
+        <h2>Login</h2>
+        <form class="row g-3"action="/login" method="post">
+            <input type="hidden" name="role" value="HR">
+
+            <div class="col-12">
+              <label for="inputEmail4" class="form-label">Email</label>
+              <input type="email" class="form-control p-2" id="inputEmail4" name="email"placeholder="Enter Your Email">
+            </div>
+            <div class="col-12">
+              <label for="inputPassword4" class="form-label">Password</label>
+              <input type="password" class="form-control p-2" id="inputPassword4"name="password"placeholder="Enter Your Password">
+            </div>
+            
+            <div class="col-12">
+              <button type="submit" class="btn btn-info w-100">Sign in</button>
+            </div>
+            <div class="col-12">
+              <a href="/"class="btn btn-danger w-100">Cancel</a>
+            </div>
+          </form>
+   </div>
+</div>
+</body>
+</html>

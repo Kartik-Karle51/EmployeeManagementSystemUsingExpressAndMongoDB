@@ -1,0 +1,46 @@
+<%- include("header.ejs")%>
+
+<div class="container edit">
+    <div class="col">
+        <h2>Update Employee Details</h2>
+        <form class="row g-3" action="/update/<%= employee._id %>" method="POST">
+            <div class="col-12">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control p-2" id="name" name="name" value="<%= employee.empname %>" placeholder="Enter Name">
+            </div>
+
+            <div class="col-12">
+                <label for="inputEmail4" class="form-label">Email</label>
+                <input type="email" class="form-control p-2" id="inputEmail4" name="email" value="<%= employee.email %>" placeholder="Enter Email">
+            </div>
+
+            <div class="col-12">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control p-2" id="address" name="address" value="<%= employee.address %>" placeholder="Enter Address">
+            </div>
+
+            <div class="col-12">
+                <label for="salary" class="form-label">Salary</label>
+                <input type="number" class="form-control p-2" id="salary" name="salary" value="<%= employee.salary %>" placeholder="Enter Salary">
+            </div>
+
+            <div class="col-12">
+                <label for="dept" class="form-label">Department</label>
+                <select class="form-select" id="dept" name="department">
+                    <option value="Development & Engineering" <%= employee.department === "Development & Engineering" ? "selected" : "" %>>Development & Engineering</option>
+                    <option value="Quality Assurance (QA) & Testing" <%= employee.department === "Quality Assurance (QA) & Testing" ? "selected" : "" %>>Quality Assurance (QA) & Testing</option>
+                    <option value="IT Support / Helpdesk" <%= employee.department === "IT Support / Helpdesk" ? "selected" : "" %>>IT Support / Helpdesk</option>
+                    <option value="Product Management" <%= employee.department === "Product Management" ? "selected" : "" %>>Product Management</option>
+                    <option value="Security" <%= employee.department === "Security" ? "selected" : "" %>>Security</option>
+                    <option value="Database Administration (DBA)" <%= employee.department === "Database Administration (DBA)" ? "selected" : "" %>>Database Administration (DBA)</option>
+                    <option value="Sales & Marketing" <%= employee.department === "Sales & Marketing" ? "selected" : "" %>>Sales & Marketing</option>
+                    <option value="Networking & Infrastructure" <%= employee.department === "Networking & Infrastructure" ? "selected" : "" %>>Networking & Infrastructure</option>
+                </select>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-success w-25 addEmployee">Update</button>
+            </div>
+        </form>
+    </div>
+</div>

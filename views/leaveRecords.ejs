@@ -1,0 +1,39 @@
+<%- include("header.ejs")%>
+
+<div class="container pt-5">
+    <div class="col-12">
+        <table class="table table-hover rounded-3 overflow-hidden">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% leaves.forEach((leave, index) => { %>
+                    <tr>
+                        <th><%= index + 1 %></th>
+                        <td><%= leave.names %></td>
+                        <td><%= leave.email %></td>
+                        <td><%= leave.subject %></td>
+                        <td><%= leave.message.substring(0, 30) %>...</td>
+                        <td><%= new Date(leave.date).toLocaleDateString() %></td>
+                        <td><%= leave.status %></td>
+                        <td>
+                            <a href="/viewLeave/<%= leave._id %>" class="btn btn-success text-white">View</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <div class="col-12">
+            <a href="/hrDashboard" class="btn btn-danger text-white back">Back</a>
+        </div>
+    </div>
+</div>
